@@ -10,8 +10,7 @@ feature 'create a new user', %Q{
 #User should be able to sign up if the email and username is unique
 
   scenario 'new user signs up' do
-    visit new_user_url
-    fill_in 'Username', with: 'user_name'
+    visit new_user_path
     fill_in 'Password', with: 'password'
     fill_in 'Email', with: 'email@email.email'
 

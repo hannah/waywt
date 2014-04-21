@@ -11,11 +11,13 @@ feature 'create a new user', %Q{
 
   scenario 'new user signs up' do
     visit new_user_registration_path
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
+    save_and_open_page
+    fill_in 'Username', with: 'thenameofauser'
+    fill_in('* Password', with: 'password', exact: true)
+    fill_in('* Password confirmation', with: 'password', exact: true)
     fill_in 'Email', with: 'email@email.email'
 
-    click_on 'Sign Up'
+    click_button 'Sign up'
     expect(page).to have_content('Welcome!')
     expect(page).to have_content('user_name')
   end

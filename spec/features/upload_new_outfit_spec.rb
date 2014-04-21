@@ -22,9 +22,10 @@ User can submit and save a post
     visit new_outfit_path
     outfit = FactoryGirl.build(:outfit)
     fill_in 'Description', with: outfit.description
-    attach_file 'outfit_image', File.join(Rails.root, outfit.image)
-    click_on 'Submit Outfit'
+    attach_file "outfit_image", File.join(Rails.root, '/spec/support/outfit.jpg')
+    click_on 'Create Outfit'
     expect(page).to have_content('Outfit Submitted')
+    save_and_open_page
     expect(page).to have_content()
   end
 

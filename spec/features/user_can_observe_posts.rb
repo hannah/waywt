@@ -17,10 +17,16 @@ User should be able to upvote a post
 =end
 
   scenario "user should be able to see another user's posts" do
-    outfit
-    visit outfit_path
-    expect(page).to have_content("Description")
-    expect(page).to have_content("username")#first user's username
+    not_the_maker = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+    visit new_outfit_path
+    outfit = FactoryGirl.create(:outfit, user: user)
+    click_on "Logout"
+
+    sign_in_as(not_the_maker)
+    visit outfit_path(outfit)
+    expect(page).to_not have_content("Delete")
   end
 
 end

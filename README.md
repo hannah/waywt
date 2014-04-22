@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/hzab/waywt.svg?branch=master)](https://travis-ci.org/hzab/waywt)
+
 [![Coverage Status](https://coveralls.io/repos/hzab/waywt/badge.png?branch=master)](https://coveralls.io/r/hzab/waywt?branch=master)
 
 

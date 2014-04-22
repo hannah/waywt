@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
 gem 'foundation-rails'
+gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
 
 group :doc do

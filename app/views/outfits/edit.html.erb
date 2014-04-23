@@ -1,0 +1,8 @@
+<h2>Edit Outfit</h2>
+<div>
+  <%= simple_form_for @outfit do |f| %>
+    <%= f.file_field :image %>
+    <%= f.input :description %>
+    <%= f.button :submit%>
+  <% end %>
+</div>

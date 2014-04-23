@@ -14,8 +14,30 @@ class OutfitsController < ApplicationController
     end
   end
 
+  def index
+    if params[:q]
+      username = params[:q][:username]
+      @outfits = User.where("username ILIKE ?", "%#{username}%")
+    else
+      @outfits = Outfit.all
+    end
+  end
+
   def show
     @outfit = Outfit.find(params[:id])
+  end
+
+  def edit
+    @outfit = Outfit.find(params[:id])
+  end
+
+  def update
+    @outfit = Outfit.find(params[:id])
+    if @outfit.update(outfit_params)
+      redirect_to outfit_path(@outfit), notice: 'Outfit updated'
+    else
+      render 'edit'
+    end
   end
 
   private

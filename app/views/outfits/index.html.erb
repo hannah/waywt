@@ -1,0 +1,12 @@
+<%= simple_form_for :q, url: outfits_path, method: :get do |f| %>
+  <%= f.input :search %>
+  <%= f.button :submit, "Search" %>
+<% end %>
+
+<ul class="small-block-grid-1 medium-block-grid-3">
+  <% @outfits.each do |outfit| %>
+    <li>
+      <%= image_tag outfit.image %>
+    </li>
+  <% end %>
+</ul>

@@ -1,7 +1,7 @@
 require 'spec_helper'
 feature 'user can edit an outfit', %Q{
   As a user
-  I want to be able to upload my outfit
+  I want to be able to edit my outfit
   So that other users can view and interact with my post
   } do
 

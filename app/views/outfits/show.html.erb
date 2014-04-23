@@ -1,2 +1,5 @@
 <%= image_tag @outfit.image %>
 <%= @outfit.description %>
+
+<%= link_to 'Edit', edit_outfit_path(@outfit) %>
+<%= link_to 'Delete Outfit', @outfit, method: :delete %>

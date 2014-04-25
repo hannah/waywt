@@ -4,4 +4,8 @@ class Outfit < ActiveRecord::Base
   belongs_to :user
 
   mount_uploader :image, ImageUploader
+
+  def self.search(query)
+    where(query)
+  end
 end

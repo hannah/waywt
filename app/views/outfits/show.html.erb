@@ -1,5 +1,11 @@
-<%= image_tag @outfit.image %>
-<%= @outfit.description %>
-
-<%= link_to 'Edit', edit_outfit_path(@outfit) %>
-<%= link_to 'Delete Outfit', @outfit, method: :delete %>
+<div class="row clearfix">
+<div class="large-6 columns"><%= image_tag @outfit.image_url(:full_size) %></div>
+<div class="panel large-6 columns">
+  <div>
+    <p class="text-justify"><%= @outfit.description %></p>
+    <p><%= link_to 'Delete Outfit', @outfit, method: :delete %></p>
+  </div>
+  <a href="<%= edit_outfit_path(@outfit) %>" class="button radius">Edit</a>
+  <%= link_to 'Delete Outfit', @outfit, method: :delete %>
+</div>
+</div>

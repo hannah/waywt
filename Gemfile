@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'simple_form'
 gem 'devise'
 gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
 gem 'foundation-rails'
 gem 'coveralls', require: false
 gem 'rails_12factor', group: :production

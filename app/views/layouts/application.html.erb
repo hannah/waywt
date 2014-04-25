@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "WAYWT" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,17 +12,47 @@
   </head>
 
   <body>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="<%= root_url %>">WAYWT.me</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
 
-    <div class='user-nav'>
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
-    </div>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-form">
+            <div class="row collapse">
+              <%= form_tag('/search', method: :get) do %>
+                <div class="large-8 small-9 columns">
+                  <%= text_field_tag :query%>
+                </div>
+                <div class="large-4 small-3 columns">
+                  <%= submit_tag 'Search', class: "button expand" %>
+                </div>
+              <% end %>
+            </div>
+          </li>
+          <li class="active"><%= link_to 'Upload', new_outfit_url %></li>
+          <li class="has-dropdown">
+            <% if user_signed_in? %>
+              <a href="#"><%= current_user.username %></a>
+              <ul class="dropdown">
+                <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            <% else %>
+              <a href="<%= new_user_session_path %>">Sign In</a>
+              <ul class="dropdown">
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
+              </ul>
+            <% end %>
+          </li>
+        </ul>
+      </section>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

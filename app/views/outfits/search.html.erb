@@ -1,0 +1,8 @@
+<h1>Search</h1>
+<% if @outfits.exists? %>
+  <% @outfits.each do |outfit| %>
+    <%= outfit.username %>
+  <% end %>
+<% else %>
+  <p>User does not exist</p>
+<% end %>

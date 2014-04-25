@@ -4,23 +4,22 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    @outfit = Outfit.new(outfit_params)
-    @outfit.user = current_user
-    if @outfit.save
-      redirect_to outfit_path(@outfit),
-        notice: 'Outfit Submitted'
+    if user_signed_in?
+      @outfit = Outfit.new(outfit_params)
+      @outfit.user = current_user
+      if @outfit.save
+        redirect_to outfit_path(@outfit),
+          notice: 'Outfit Submitted'
+      else
+        render 'new'
+      end
     else
-      redirect_to new_user_session, notice: 'You must be signed in to post'
+      redirect_to '/users/sign_in', notice: 'You must be signed in to post'
     end
   end
 
   def index
-    if params[:q]
-      username = params[:q][:username]
-      @outfits = User.where("username ILIKE ?", "%#{username}%")
-    else
-      @outfits = Outfit.all
-    end
+    @outfits = Outfit.all
   end
 
   def show
@@ -46,7 +45,20 @@ class OutfitsController < ApplicationController
     end
   end
 
+  def search
+    if params[:query]
+      username = params[:query]
+      @outfits = User.where("username ILIKE ?", "%#{username}%")
+    else
+      "Search does not exit"
+    end
+  end
+
   private
+
+  def query_params
+    params.require(:query)
+  end
 
   def outfit_params
     params.require(:outfit).permit(:image, :description, :user_id)

@@ -23,7 +23,6 @@ class OutfitsController < ApplicationController
   end
 
   def show
-    binding.pry
     @outfit = Outfit.find(params[:id])
   end
 

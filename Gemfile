@@ -14,6 +14,7 @@ gem 'rmagick', require: 'RMagick'
 gem 'foundation-rails'
 gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
+gem 'fog'
 
 group :doc do
   gem 'sdoc', require: false
@@ -27,6 +28,7 @@ group :development, :test do
   gem "quiet_assets"
   gem "pry-rails"
   gem "factory_girl_rails"
+  gem 'dotenv-rails'
 end
 
 group :test do

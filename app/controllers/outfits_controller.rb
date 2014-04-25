@@ -27,13 +27,22 @@ class OutfitsController < ApplicationController
   end
 
   def edit
-    @outfit = Outfit.find(params[:id])
+    if @outfit.user == current_user
+      @outfit = Outfit.find(params[:id])
+    else
+      flash[:alert] = "Can't edit outfit you didn't create"
+    end
   end
 
   def destroy
-    @outfit = Outfit.find(params[:id])
-    @outfit.destroy
-    redirect_to outfits_path, notice: 'Outfit deleted'
+    if @outfit.user == current_user
+      @outfit = Outfit.find(params[:id])
+      @outfit.destroy
+      redirect_to outfits_path, notice: 'Outfit deleted'
+    else
+      flash[:alert] = 'Cannot delete outfit!'
+      redirect_to outfit_path(@outfit)
+    end
   end
 
   def update

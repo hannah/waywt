@@ -3,7 +3,6 @@
 <div class="panel large-6 columns">
   <div>
     <p class="text-justify"><%= @outfit.description %></p>
-    <p><%= link_to 'Delete Outfit', @outfit, method: :delete %></p>
   </div>
   <a href="<%= edit_outfit_path(@outfit) %>" class="button radius">Edit</a>
   <%= link_to 'Delete Outfit', @outfit, method: :delete %>

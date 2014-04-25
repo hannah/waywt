@@ -19,12 +19,7 @@ class OutfitsController < ApplicationController
   end
 
   def index
-    if params[:query]
-      username = params[:query][:username]
-      @outfits = User.where("username ILIKE ?", "%#{username}%")
-    else
-      @outfits = Outfit.all
-    end
+    @outfits = Outfit.all
   end
 
   def show
@@ -52,7 +47,12 @@ class OutfitsController < ApplicationController
   end
 
   def search
-    @outfits = Outfit.search("%#{query_params}%")
+    if params[:query]
+      username = params[:query]
+      @outfits = User.where("username ILIKE ?", "%#{username}%")
+    else
+      "Search does not exit"
+    end
   end
 
   private

@@ -53,8 +53,9 @@
         </ul>
       </section>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render 'layouts/messages' %>
+    <p></p>
+    <p></p>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

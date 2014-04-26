@@ -3,8 +3,11 @@
 <div class="panel large-6 columns">
   <div>
     <p class="text-justify"><%= @outfit.description %></p>
+    <p class="text-justify"><%= @outfit.user.username %></p>
   </div>
-  <a href="<%= edit_outfit_path(@outfit) %>" class="button radius">Edit</a>
-  <%= link_to 'Delete Outfit', @outfit, method: :delete %>
+   <% if @outfit.user == current_user %>
+    <%= link_to 'Edit', edit_outfit_path(@outfit), class: "button radius" %>
+    <%= link_to 'Delete', outfit_path(@outfit), method: :delete , class: "button radius"%>
+  <% end %>
 </div>
 </div>

@@ -3,6 +3,7 @@
 <div class="panel large-6 columns">
   <div>
     <p class="text-justify"><%= @outfit.description %></p>
+    <p class="text-justify"><%= @outfit.user.username %></p>
   </div>
    <% if @outfit.user == current_user %>
     <%= link_to 'Edit', edit_outfit_path(@outfit), class: "button radius" %>

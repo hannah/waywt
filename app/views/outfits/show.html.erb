@@ -8,6 +8,10 @@
    <% if @outfit.user == current_user %>
     <%= link_to 'Edit', edit_outfit_path(@outfit), class: "button radius" %>
     <%= link_to 'Delete', outfit_path(@outfit), method: :delete , class: "button radius"%>
+    <%= simple_form_for @outfit do |f| %>
+      <%= f.input :tags %>
+      <%= f.button :submit, label: "Add tags" %>
+    <%end %>
   <% end %>
 </div>
 </div>

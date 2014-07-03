@@ -1,3 +1,3 @@
 class Tag < ActiveRecord::Base
-  has_many :outfits, through: :outfit_tags
+  has_many :outfits
 end

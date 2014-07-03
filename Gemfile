@@ -15,6 +15,7 @@ gem 'foundation-rails'
 gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
 gem 'fog'
+gem 'kaminari'
 
 group :doc do
   gem 'sdoc', require: false
